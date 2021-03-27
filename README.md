@@ -13,11 +13,16 @@ https://manage.chef.io/
 6) copy Chef-repo folder to D: like D:\chef-repo
 ````
 
+# Download Chef workstation from Below URL
+```bash
+https://downloads.chef.io/tools/workstation
+install on Windows 10 PC
+````
 # On Chef Workstation
 ```bash
-#open Chefworkstation powershell
-#go to D:\chef-repo
-#check Connection between Chef Workstation & Chef Client
+# open Chefworkstation powershell
+# go to D:\chef-repo
+# check Connection between Chef Workstation & Chef Client
 E:\chef-repo>knife ssl check
 ````
 if Above command Get error then follow below steps
@@ -53,7 +58,6 @@ end
 windows_package 'winscp' do
 action	:add
 source 'http://kalpeshpc:8080/WinSCP-5.15.5-Setup.exe'
-  
 end
 
 powershell_script 'Shutdown PC' do
