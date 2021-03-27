@@ -1,56 +1,84 @@
 # chefserver
-# for Public chef Server go to
+# Create Account on  Public chef Server
+
+```bash
 https://manage.chef.io/
-# Create Account
-#Login to Account
-#Crete orgnization
-#Download Stater kits under the Organization as chef-starter.zip
-#Exract chef-starter.zip to D:\
-#copy Chef-repo folder to D: like D:\chef-repo
+````
+```bash
+1) Create Account
+2) Login to Account
+3) Create Orgnization
+4) Download Stater kits under the Organization as chef-starter.zip
+5) Exract chef-starter.zip to D:\
+6) copy Chef-repo folder to D: like D:\chef-repo
+````
 
-
-On Chef Workstation
+# On Chef Workstation
+```bash
 #open Chefworkstation powershell
 #go to D:\chef-repo
 #check Connection between Chef Workstation & Chef Client
 E:\chef-repo>knife ssl check
+````
+if Above command Get error then follow below steps
 
-# if above command get error try below command & try Again
-#below command help you to fetch ssl certificate from chef server
-# and install on chef workstation
+```bash
+if above command get error try below command & try Again
+below command help you to fetch ssl certificate from chef server
+and install on chef workstation
 E:\chef-repo>knife ssl fetch
+````
 
 # Generate cookbook
+```bash
 E:\chef-repo\cookbooks>chef generate cookbook 123-cookbook
+````
 
 # Generate recipe inside cookbook
-E:\chef-repo\cookbooks\123-cookbook>chef generate recipe demo
 
+```bash
+1) E:\chef-repo\cookbooks\123-cookbook>chef generate recipe demo
 # write code in to E:\chef-repo\cookbooks\123-cookbook\recipe\demo.rb
-# Example
+
+Example
 file 'c:\demofile' do
 content 'my first recipe from kalpesh'
 action :create
 end
 
-# To check syntax error
-chef exec ruby -c .\123-cookbook\recipes\demo.rb
+````
 
-# option Step
-# to check recipe on locale server of chefworkstation
+# To check syntax error
+```bash
+chef exec ruby -c .\123-cookbook\recipes\demo.rb
+````
+
+# Optional Step
+```bash
+To check recipe on locale server of chefworkstation
 # Command is below
 chef-client -zr "recipe[123-cookbook::demo]"
+````
 
-#Upload cookbook to chef server
+# Upload cookbook to chef server
+```bash
 E:\chef-repo> knife cookbook upload 123-cookbook
+````
 
-#Bootstraping of windows chef Client
-#Bootstraping is process to add chef client in to chefserver
-E:\chef-repo>knife bootstrap -o winrm 172.16.2.36 -N '716A-11' -U Administrator -P 'ceit'
+# Bootstraping of windows chef Client
 
+```bash
+Bootstraping is process to add chef client in to chefserver
+E:\chef-repo>knife bootstrap -o winrm 172.16.2.36 -N '716A-11' -U Administrator -P 'password'
+````
 
-#Bootstraping of windows chef Client without SSL Certificate
-knife bootstrap -o winrm 172.16.2.39 -N '716A-14' -U Administrator -P 'ceit' --winrm-no-verify-cert
-On Chef Client
-#Download Recipe task from Chef Server
+# Bootstraping of windows chef Client without SSL Certificate
+knife bootstrap -o winrm 172.16.2.39 -N 'ip/pcname' -U Administrator -P 'password' --winrm-no-verify-cert
+
+# On Chef Client
+```bash
+Manually Download Recipe task from Chef Server
 C:\User\Administrator> chef-client
+````
+
+
