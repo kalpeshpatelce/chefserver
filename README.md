@@ -41,10 +41,27 @@ E:\chef-repo\cookbooks>chef generate cookbook 123-cookbook
 # write code in to E:\chef-repo\cookbooks\123-cookbook\recipe\demo.rb
 
 Example
-file 'c:\demofile' do
-content 'my first recipe from kalpesh'
+file 'c:\myfile' do
+content 'Test recipe from kalpesh welcome to charusat updated cookbook'
 action :create
 end
+
+service 'CharusatApps' do
+action [:enable, :start]
+end
+
+windows_package 'winscp' do
+action	:add
+source 'http://kalpeshpc:8080/WinSCP-5.15.5-Setup.exe'
+  
+end
+
+powershell_script 'Shutdown PC' do
+  code <<-EOH
+   shutdown -r -f -t 00
+  EOH
+ end
+
 
 ````
 
