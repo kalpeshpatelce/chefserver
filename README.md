@@ -25,6 +25,30 @@ install on Windows 10 PC
 # check Connection between Chef Workstation & Chef Client
 E:\chef-repo>knife ssl check
 ````
+# Configure Chef Server for Workstation
+Go to E:\chef-repo\.chef\config.rb
+
+```bash
+# See https://docs.getchef.com/config_rb.html for more information on knife configuration options
+
+current_dir = File.dirname(__FILE__)
+log_level                :info
+log_location             STDOUT
+node_name                "chefadmin"
+client_key               "#{current_dir}/chefadmin.pem"
+chef_server_url          "https://chefserver/organizations/charusat"
+cookbook_path            ["#{current_dir}/../cookbooks"]
+ssl_verify_mode			:verify_none
+````
+if you want to configure on-Premises own Chef server then
+```bash
+Change Chef_server_url to local server 
+````
+for local server please disable ssl check by adding
+```bash
+ssl_verify_mode			:verify_none
+````
+at end of file
 if Above command Get error then follow below steps
 
 ```bash
